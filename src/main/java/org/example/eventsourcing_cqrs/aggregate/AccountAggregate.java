@@ -30,7 +30,7 @@ public class AccountAggregate {
         log.info("############# CommandHandler : AddAccountCommand created ########################## ");
       if(command.getInitialBalance()<=0) throw  new IllegalArgumentException("Balance must be positive");
       AggregateLifecycle.apply(new AccountCreatedEvent(command.getId(),command.getInitialBalance(),command.getCurrency(),AccountStatus.CREATED));
-        AggregateLifecycle.apply(new AccountActivatedEvent(this.accountId,AccountStatus.ACTIVATED));//ici un fonction de decision peut emetre plusieures evenements
+        AggregateLifecycle.apply(new AccountActivatedEvent(command.getId(),AccountStatus.ACTIVATED));//ici un fonction de decision peut emetre plusieures evenements
     }
 
 
@@ -49,9 +49,9 @@ public class AccountAggregate {
     public void handle(CreditAccountCommand command){
         System.out.println("COMMAND HANDLER EXECUTED");
         log.info("############# CommandHandler : CreditAccountCommand created ########################## ");
-        if(!accountStatus.equals(AccountStatus.CREATED)) throw  new RuntimeException("The Account Is not acctivated" );
+        if(!accountStatus.equals(AccountStatus.ACTIVATED)) throw  new RuntimeException("The Account Is not acctivated" );
         if(command.getAmmount()<=0) throw  new IllegalArgumentException("Amount must be positive");
-        AggregateLifecycle.apply(new AccountCreditedEvent(command.getId(), command.getAmmount(), command.getCurrency()));
+        AggregateLifecycle.apply(new AccountCreditedEvent(this.accountId, command.getAmmount(), command.getCurrency()));
     }
 
 
