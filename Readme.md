@@ -59,7 +59,7 @@ Pour un environnement réaliste, nous passons d'une base H2 en mémoire à une b
 
 *    Visualisation des  événements via PGAdmin.
 
-    ![Visualisation des événements en base](img_10.png)
+   ![img_21.png](img_21.png)
 
 ### 4. Exécution des Commandes
 Ona ajout d'autres commandes qui sont traitées par l'`AccountAggregate`. L'agrégat vérifie les règles métier, émet des événements, les stocke dans l'Event Store (via `@CommandHandler`), et met à jour son état interne (via `@EventSourcingHandler`).
