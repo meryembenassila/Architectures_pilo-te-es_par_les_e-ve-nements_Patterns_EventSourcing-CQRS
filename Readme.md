@@ -21,15 +21,15 @@ Création du projet Spring Boot (Java 21) avec les dépendances nécessaires : S
 ### 1. Envoi de commandes (Command Gateway)
 Le contrôleur reçoit les requêtes HTTP (DTOs), les transforme en **Commandes** et les dispatche via le `CommandGateway`.
 
-*   **Erreur de routage** : Tentative d'envoi d'une commande sans qu'un Handler (Agrégat) ne soit souscrit pour la traiter.
+* Tentative d'envoi d'une commande sans qu'un Handler (Agrégat) ne soit souscrit pour la traiter.
 
     ![Erreur : Aucun handler trouvé](img_1.png)
 
-*   **Succès** : Une fois l'agrégat créé, la commande est traitée et retourne l'identifiant unique (UUID) du compte généré.
+*  Une fois l'agrégat créé, la commande est traitée et retourne l'identifiant unique (UUID) du compte généré.
 
     ![Succès : Retour de l'UUID](img_2.png)
 
-**Vérification dans la base H2 :**
+*   **Vérification dans la base H2 :**
 nous vérifions que l'événement a bien été enregistré. Axon crée automatiquement une table `domain_event_entry` dans la base en mémoire pour stocker l'historique de tous les événements générés par les agrégats.
 
 ![Vérification de l'événement dans H2](img_4.png)
