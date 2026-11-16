@@ -51,12 +51,12 @@ public class AccountAggregate {
         log.info("############# CommandHandler : CreditAccountCommand created ########################## ");
         if(!accountStatus.equals(AccountStatus.ACTIVATED)) throw  new RuntimeException("The Account Is not acctivated" );
         if(command.getAmmount()<=0) throw  new IllegalArgumentException("Amount must be positive");
-        AggregateLifecycle.apply(new AccountCreditedEvent(this.accountId, command.getAmmount(), command.getCurrency()));
+        AggregateLifecycle.apply(new AccountCreditedEvent(this.accountId, command.getAmmount(), command.getCurrency()));//créer un evenement dans event bus + enregistrer dans event store
     }
 
 
 
-    @EventSourcingHandler
+    @EventSourcingHandler //mutter l'etat de l'application
     public void on(AccountCreditedEvent event){
         System.out.println("EVENT SOURCING HANDLER EXECUTED");
         log.info("############# EventSourcingHandler : AccountCreatedEvent occured ########################## ");
