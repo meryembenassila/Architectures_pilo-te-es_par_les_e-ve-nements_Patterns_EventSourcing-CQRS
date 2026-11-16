@@ -49,15 +49,15 @@ Pour un environnement réaliste, nous passons d'une base H2 en mémoire à une b
 
 ### 3. Event Store (Stockage des événements)
 
-*   **Table Event Store** : Visualisation de la table via l'IDE via postgres .
+*    Visualisation de la table des événements via postgres .
 
-    ![Table domain_event_entry](img_7.png)
+![Table domain_event_entry](img_7.png)
 
-*   **Lecture des événements** : Requête API pour récupérer l'historique des événements liés à un compte spécifique.
+*   Requête API pour récupérer l'historique des événements liés à un compte spécifique.
 
     ![API Events par compte](img_8.png)
 
-*   **Contenu de l'Event Store** : Visualisation de multiples événements (Created, Activated) via PGAdmin.
+*    Visualisation des  événements via PGAdmin.
 
     ![Visualisation des événements en base](img_10.png)
 
