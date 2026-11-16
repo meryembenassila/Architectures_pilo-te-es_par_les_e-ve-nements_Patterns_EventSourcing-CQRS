@@ -18,7 +18,7 @@ Création du projet Spring Boot (Java 21) avec les dépendances nécessaires : S
 
 ##  Partie 1 : Write Side (Côté Commande)
 
-### 1. Envoi de commandes (Command Gateway)
+### 1. Création des Commandes 
 Le contrôleur reçoit les requêtes HTTP (DTOs), les transforme en **Commandes** et les dispatche via le `CommandGateway`.
 
 * Tentative d'envoi d'une commande sans qu'un Handler (Agrégat) ne soit souscrit pour la traiter.
@@ -61,7 +61,7 @@ Pour un environnement réaliste, nous passons d'une base H2 en mémoire à une b
 
    ![img_21.png](img_21.png)
 
-### 4. Exécution des Commandes
+### 4. Autres  Commandes
 On a ajouté d'autres commandes qui sont traitées par l'`AccountAggregate`. L'agrégat vérifie les règles métier, émet des événements, les stocke dans l'Event Store (via `@CommandHandler`), et met à jour son état interne (via `@EventSourcingHandler`).
 
 *   **Créditer un compte** :
